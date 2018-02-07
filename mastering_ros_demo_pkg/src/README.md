@@ -1,4 +1,5 @@
 In demo_topic programms, the publisher publishes 1, 2, 3, ,,, to "/demo_topic_publisher_topic".
+
 In demo_msg programms, the publisher publishes arrays of custom data in the form of
 ```
 msg = [{str1, int, uint, str2, float, bool}
