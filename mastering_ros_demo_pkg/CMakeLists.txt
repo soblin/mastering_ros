@@ -32,6 +32,11 @@ add_service_files(
   demo_service.srv
   )
 
+add_action_files(
+  FILES
+  demo_action.action
+  )
+
 generate_messages(
   DEPENDENCIES
   std_msgs
@@ -48,6 +53,8 @@ add_executable(demo_msg_publisher_node    src/demo_msg_publisher.cpp)
 add_executable(demo_msg_subscriber_node   src/demo_msg_subscriber.cpp)
 add_executable(demo_service_server_node   src/demo_service_server.cpp)
 add_executable(demo_service_client_node   src/demo_service_client.cpp)
+add_executable(demo_action_server_node    src/demo_action_server.cpp)
+add_executable(demo_action_client_node    src/demo_action_client.cpp)
 
 #add_dependencies(ノード名 パッケージ名_generate_messages_cpp)とかく
 add_dependencies(demo_topic_publisher_node  mastering_ros_demo_pkg_generate_messages_cpp)
@@ -56,6 +63,8 @@ add_dependencies(demo_msg_publisher_node    mastering_ros_demo_pkg_generate_mess
 add_dependencies(demo_msg_subscriber_node   mastering_ros_demo_pkg_generate_messages_cpp)
 add_dependencies(demo_service_server_node   mastering_ros_demo_pkg_generate_messages_cpp)
 add_dependencies(demo_service_client_node   mastering_ros_demo_pkg_generate_messages_cpp)
+add_dependencies(demo_action_server_node    mastering_ros_demo_pkg_generate_messages_cpp)
+add_dependencies(demo_action_client_node    mastering_ros_demo_pkg_generate_messages_cpp)
 
 target_link_libraries(demo_topic_publisher_node  ${catkin_LIBRARIES})
 target_link_libraries(demo_topic_subscriber_node ${catkin_LIBRARIES})
@@ -63,3 +72,5 @@ target_link_libraries(demo_msg_publisher_node    ${catkin_LIBRARIES})
 target_link_libraries(demo_msg_subscriber_node   ${catkin_LIBRARIES})
 target_link_libraries(demo_service_server_node   ${catkin_LIBRARIES})
 target_link_libraries(demo_service_client_node   ${catkin_LIBRARIES})
+target_link_libraries(demo_action_server_node    ${catkin_LIBRARIES})
+target_link_libraries(demo_action_client_node    ${catkin_LIBRARIES})
