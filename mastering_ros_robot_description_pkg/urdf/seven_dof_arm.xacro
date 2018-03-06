@@ -74,11 +74,6 @@
 	  </actuator>
 	</transmission>
   </xacro:macro>
-<!--
-  <xacro:base name="base"/>
-  <xacro:arm parent="base"/>
-  <xacro:gripper parent="tool"/>
--->
 
 <!--
 	////////////////////////////////////////////////////////////
@@ -138,7 +133,7 @@
 	////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////
 -->
-
+<!-- rotate on its z axis -->
   <joint name="shoulder_pan_joint" type="revolute">
 	<parent link="base_link"/>
 	<child link="shoulder_pan_link"/>
@@ -180,7 +175,8 @@
 	////////////////////////////////////////////////////////////
 -->
 
-
+<!-- tilt backward and forward -->
+<!-- r is related to z axis. -->
   <joint name="shoulder_pitch_joint" type="revolute">
 	<parent link="shoulder_pan_link"/>
 	<child link="shoulder_pitch_link"/>
@@ -547,6 +543,10 @@
   <xacro:transmission_block joint_name="finger_joint2"/>
 
   <!--
+  <xacro:base name="base"/>
+  <xacro:arm parent="base"/>
+  <xacro:gripper parent="tool"/>
+
   <xacro:xtion_pro_live name="rgbd_camera" parent="base">
 	<origin xyz="0.1 0 1" rpy="0 ${75.0 * deg_to_rad} 0"/>
 	<origin xyz="0 0 0" rpy="0 ${-90.0 * deg_to_rad} 0 ${-90 * deg_to_rad}"/>
