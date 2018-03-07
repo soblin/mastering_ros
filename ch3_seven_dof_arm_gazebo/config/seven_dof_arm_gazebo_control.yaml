@@ -1,0 +1,40 @@
+seven_dof_arm:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  shoulder_pan_controller:
+    type: position_controllers/JointPositionController
+    joint: shoulder_pan_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+    
+  shoulder_pitch_controller:
+    type: position_controllers/JointPositionController
+    joint: shoulder_pitch_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  elbow_roll_controller:
+    type: position_controllers/JointPositionController
+    joint: elbow_roll_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+    
+  elbow_pitch_controller:
+    type: position_controllers/JointPositionController
+    joint: elbow_pitch_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  wrist_roll_controller:
+    type: position_controllers/JointPositionController
+    joint: wrist_roll_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  wrist_pitch_controller:
+    type: position_controllers/JointPositionController
+    joint: wrist_pitch_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  gripper_roll_controller:
+    type: position_controllers/JointPositionController
+    joint: gripper_roll_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+    

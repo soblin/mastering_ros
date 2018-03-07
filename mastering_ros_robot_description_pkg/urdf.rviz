@@ -60,37 +60,87 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        caster_back_link:
+        bottom_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        caster_front_link:
+        elbow_pitch_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_left_wheel:
+        elbow_roll_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_right_wheel:
+        grasping_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        hokuyo_link:
+        gripper_finger_link1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        gripper_finger_link2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        gripper_roll_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rgbd_camera_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rgbd_camera_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rgbd_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rgbd_camera_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rgbd_camera_rgb_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rgbd_camera_rgb_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        shoulder_pan_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        shoulder_pitch_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wrist_pitch_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wrist_roll_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -106,19 +156,41 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base_footprint:
-          Value: true
         base_link:
           Value: true
-        caster_back_link:
+        bottom_link:
           Value: true
-        caster_front_link:
+        elbow_pitch_link:
           Value: true
-        front_left_wheel:
+        elbow_roll_link:
           Value: true
-        front_right_wheel:
+        grasping_frame:
           Value: true
-        hokuyo_link:
+        gripper_finger_link1:
+          Value: true
+        gripper_finger_link2:
+          Value: true
+        gripper_roll_link:
+          Value: true
+        rgbd_camera_depth_frame:
+          Value: true
+        rgbd_camera_depth_optical_frame:
+          Value: true
+        rgbd_camera_link:
+          Value: true
+        rgbd_camera_optical_frame:
+          Value: true
+        rgbd_camera_rgb_frame:
+          Value: true
+        rgbd_camera_rgb_optical_frame:
+          Value: true
+        shoulder_pan_link:
+          Value: true
+        shoulder_pitch_link:
+          Value: true
+        wrist_pitch_link:
+          Value: true
+        wrist_roll_link:
           Value: true
       Marker Scale: 0.5
       Name: TF
@@ -126,18 +198,31 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_footprint:
-          base_link:
-            caster_back_link:
+        base_link:
+          bottom_link:
+            {}
+          rgbd_camera_link:
+            rgbd_camera_depth_frame:
+              rgbd_camera_depth_optical_frame:
+                {}
+            rgbd_camera_optical_frame:
               {}
-            caster_front_link:
-              {}
-            front_left_wheel:
-              {}
-            front_right_wheel:
-              {}
-            hokuyo_link:
-              {}
+            rgbd_camera_rgb_frame:
+              rgbd_camera_rgb_optical_frame:
+                {}
+          shoulder_pan_link:
+            shoulder_pitch_link:
+              elbow_roll_link:
+                elbow_pitch_link:
+                  wrist_roll_link:
+                    wrist_pitch_link:
+                      gripper_roll_link:
+                        grasping_frame:
+                          {}
+                        gripper_finger_link1:
+                          {}
+                        gripper_finger_link2:
+                          {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -165,7 +250,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.912299931
+      Distance: 2.23538256
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -180,10 +265,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.464797616
+      Pitch: 0.399797469
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.14356971
+      Yaw: 1.05856979
     Saved: ~
 Window Geometry:
   Displays:
