@@ -9,66 +9,65 @@
 
 class demo_actionAction{
 protected:
-    ros::NodeHandle node_obj;
-    /*demo_action_server_node
-     * NodeHandle instance must be created before this line.
-     * Otherwise strange error may occur.
-     */
-    actionlib::SimpleActionServer<mastering_ros_demo_pkg::demo_actionAction> demo_action_server_node;
-    mastering_ros_demo_pkg::demo_actionFeedback feedback;
-    mastering_ros_demo_pkg::demo_actionResult result;
+    ros::NodeHandle node_handle_;
+    actionlib::SimpleActionServer<mastering_ros_demo_pkg::demo_actionAction> action_server_;
+    mastering_ros_demo_pkg::demo_actionActionFeedback feedback_;
+    mastering_ros_demo_pkg::demo_actionActionResult result_;
 
-    std::string action_name;
-    int goal;
-    int progress;
+    std::string action_name_;
+    int goal_;
+    int progress_;
 
 public:
     demo_actionAction(std::string name):
-        demo_action_server_node(node_obj, name, boost::bind(&demo_actionAction::executeCB, this, _1), false),
-        action_name(name)
+        action_server_(node_handle_, name, boost::bind(&demo_actionAction::executeCallback, this, _1), false),
+        action_name_(name)
     {
-        demo_action_server_node.registerPreemptCallback(boost::bind(&demo_actionAction::preemptCB, this));
-        demo_action_server_node.start();
+        action_server_.registerPreemptCallback(boost::bind(&demo_actionAction::preemptCallback, this));
+        action_server_.start();
     }
 
-    ~demo_actionAction(void){};
+    ~demo_actionAction(void){}
 
-    void preemptCB(){
-        ROS_WARN("%s got preempted!", action_name.c_str());
-        result.final_deg = progress;
-        demo_action_server_node.setPreempted(result, "I got preempted");
+    void preemptCallback(){
+        ROS_WARN("%s got preempted!", action_name_.c_str());
+        result_.result.final_deg = progress_;
+        action_server_.setPreempted(result_.result, "I got preempted");
     }
 
-    void executeCB(const mastering_ros_demo_pkg::demo_actionGoalConstPtr &goal){
-        if(!demo_action_server_node.isActive() || demo_action_server_node.isPreemptRequested()) return;
+    void executeCallback(const mastering_ros_demo_pkg::demo_actionGoalConstPtr &goal){
+        if(!action_server_.isActive() || action_server_.isPreemptRequested()) return;
         ros::Rate rate(5);
-        ROS_INFO("%s is processing the goal %d", action_name.c_str(), goal->goal_deg);
-        for(progress=1; progress<=goal->goal_deg; progress++){
+        ROS_INFO("%s is progressing the goal %d", action_name_.c_str(), goal->goal_deg);
+        for(progress_ = 1; progress_ <= goal->goal_deg; progress_++ ){
             if(!ros::ok()){
-                result.final_deg = progress;
-                demo_action_server_node.setAborted(result, "I failed");
-                ROS_INFO("%s shutting down", action_name.c_str());
+                result_.result.final_deg = progress_;
+                action_server_.setAborted(result_.result, "I failed!");
+                ROS_INFO("%s shutting down", action_name_.c_str());
                 break;
             }
-            if(!demo_action_server_node.isActive() || demo_action_server_node.isPreemptRequested()) return;
-            if(goal->goal_deg <= progress){
-                ROS_INFO("%s succeeded in getting to goal %d", action_name.c_str(), goal->goal_deg);
-                result.final_deg = progress;
-                demo_action_server_node.setSucceeded(result);
+
+            if(!action_server_.isActive() || action_server_.isPreemptRequested()) return;
+
+            if(goal->goal_deg <= progress_){
+                ROS_INFO("%s succeeded in getting to goal %d", action_name_.c_str(), goal->goal_deg);
+                result_.result.final_deg = progress_;
+                action_server_.setSucceeded(result_.result);
             }
+
             else{
-                ROS_INFO("setting to goal %d / %d", feedback.current_deg, goal->goal_deg);
-                feedback.current_deg = progress;
-                demo_action_server_node.publishFeedback(feedback);
+                ROS_INFO("setting to goal %d / %d", feedback_.feedback.current_deg, goal->goal_deg);
+                feedback_.feedback.current_deg = progress_;
+                action_server_.publishFeedback(feedback_.feedback);
             }
             rate.sleep();
         }
     }
 };
 
-int main(int argc, char**argv){
+int main(int argc, char **argv){
     ros::init(argc, argv, "demo_action_server_node");
-    ROS_INFO("Starting Demo Action Server");
+    ROS_INFO("Starting demo_actin server");
     demo_actionAction demo_action_obj(ros::this_node::getName());
     ros::spin();
     return 0;

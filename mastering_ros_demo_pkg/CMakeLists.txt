@@ -27,6 +27,7 @@ add_message_files(
   full_message.msg
   data.msg
   data_array.msg
+  self.msg
   )
 
 add_service_files(
@@ -59,6 +60,8 @@ add_executable(demo_action_server_node    src/demo_action_server.cpp)
 add_executable(demo_action_client_node    src/demo_action_client.cpp)
 add_executable(array_msg_publisher_node   src/array_msg_publisher.cpp)
 add_executable(array_msg_subscriber_node  src/array_msg_subscriber.cpp)
+add_executable(self_msg_publisher_node    src/self_msg_publisher.cpp)
+add_executable(self_msg_subscriber_node   src/self_msg_subscriber.cpp)
 
 #add_dependencies(ノード名 パッケージ名_generate_messages_cpp)とかく
 add_dependencies(demo_topic_publisher_node  mastering_ros_demo_pkg_generate_messages_cpp)
@@ -71,6 +74,8 @@ add_dependencies(demo_action_server_node    mastering_ros_demo_pkg_generate_mess
 add_dependencies(demo_action_client_node    mastering_ros_demo_pkg_generate_messages_cpp)
 add_dependencies(array_msg_publisher_node   mastering_ros_demo_pkg_generate_messages_cpp)
 add_dependencies(array_msg_subscriber_node  mastering_ros_demo_pkg_generate_messages_cpp)
+add_dependencies(self_msg_publisher_node    mastering_ros_demo_pkg_generate_messages_cpp)
+add_dependencies(self_msg_subscriber_node   mastering_ros_demo_pkg_generate_messages_cpp)
 
 target_link_libraries(demo_topic_publisher_node  ${catkin_LIBRARIES})  
 target_link_libraries(demo_topic_subscriber_node ${catkin_LIBRARIES})  
@@ -82,3 +87,5 @@ target_link_libraries(demo_action_server_node    ${catkin_LIBRARIES})
 target_link_libraries(demo_action_client_node    ${catkin_LIBRARIES})  
 target_link_libraries(array_msg_publisher_node   ${catkin_LIBRARIES})  
 target_link_libraries(array_msg_subscriber_node  ${catkin_LIBRARIES}) 
+target_link_libraries(self_msg_publisher_node    ${catkin_LIBRARIES})
+target_link_libraries(self_msg_subscriber_node   ${catkin_LIBRARIES})
