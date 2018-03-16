@@ -1,8 +1,0 @@
-#goal degree
-int32 goal_deg
----
-#result degree
-int32 final_deg
----
-#feedback
-int32 current_deg
