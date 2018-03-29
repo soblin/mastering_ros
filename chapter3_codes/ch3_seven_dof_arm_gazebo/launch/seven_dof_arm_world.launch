@@ -14,7 +14,7 @@
   </include>
 
   <!-- load the urdf file into ros parameter server -->
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find mastering_ros_robot_description_pkg)/urdf/seven_dof_arm.xacro'"/>
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find ch3_seven_dof_arm_gazebo)/urdf/ch3_seven_dof_arm_gazebo.xacro'"/>
 
   <!-- send a python script to send a service call to gazebo_ros_ to spawn a urdf robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model seven_dof_arm -param robot_description"/>
