@@ -15,9 +15,12 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  message_generation
   )
 
-find_package(Boost REQUIRED COMPONENTS) #boost_system)
+find_package(Boost REQUIRED COMPONENTS
+  system
+  )
 
 ## Generate messages in the 'msg' folder
 # add_message_files(
@@ -46,13 +49,14 @@ generate_messages(
   )
 
 catkin_package(
-  CATKIN_DEPENDS actionlib actionlib_msgs roscpp rospy std_msgs
+  CATKIN_DEPENDS actionlib actionlib_msgs roscpp rospy std_msgs message_runtime
   DEPENDS system_lib
   )
 
 include_directories(
   # include
   ${catkin_INCLUDE_DIRS}
+  ${Boost_INLCUDE_DIRS}
   )
 
 add_executable(averaging_server_node src/averaging_server.cpp)
