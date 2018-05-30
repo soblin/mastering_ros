@@ -16,6 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  message_runtime
   )
 
 find_package(Boost REQUIRED COMPONENTS
@@ -62,8 +63,8 @@ include_directories(
 add_executable(averaging_server_node src/averaging_server.cpp)
 add_executable(averaging_client_node src/averaging_client.cpp)
 
-add_dependencies(averaging_server_node averaging_action_generate_messsages_cpp)
-add_dependencies(averaging_client_node averaging_action_generate_messsages_cpp)
+add_dependencies(averaging_server_node averaging_action_generate_messages_cpp)
+add_dependencies(averaging_client_node averaging_action_generate_messages_cpp)
 
 # error : undefined reference to `boost::system::generic_category()
 # is generated if you failed to write properly
