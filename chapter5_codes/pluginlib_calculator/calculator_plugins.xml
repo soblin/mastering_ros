@@ -1,0 +1,14 @@
+<library path="lib/libpluginlib_calculator">
+  <!--
+	  pluginlib_calculator がパッケージ名
+	  calculator_base::calc_functions が もともとのクラス
+	  継承
+	  calculator_plugins::Add : public calculator_base::calc_functions
+	  calculator_plugins::Sub : public calculator_base::calc_functions
+	  -->
+  <class name="pluginlib_calculator/Add" type="calculator_plugins::Add" base_class_type="calculator_base::calc_functions">
+	<description>This is add plugin</description>
+  </class>
+
+  
+</library>
