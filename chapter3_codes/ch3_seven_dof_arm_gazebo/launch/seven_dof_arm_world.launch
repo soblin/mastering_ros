@@ -1,4 +1,6 @@
 <launch>
+  <rosparam file="$(find ch3_seven_dof_arm_gazebo)/config/seven_dof_arm_gazebo_world.yaml" command="load"/>
+  
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>

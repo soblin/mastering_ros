@@ -16,5 +16,13 @@
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find ch3_diff_wheeled_robot_gazebo)/urdf/diff_wheeled_robot.xacro'"/>
 
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model diff_wheeled_robot -param robot_description"/>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"></node>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+	<param name="publish_frequency" type="double" value="50.0"/>
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ch3_diff_wheeled_robot_gazebo)/config/config.rviz" required="true"/>
   
 </launch>
