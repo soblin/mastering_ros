@@ -23,20 +23,6 @@ find_package(Boost REQUIRED COMPONENTS
   system
   )
 
-## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
-
-## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
-
 add_action_files(
   FILES
   Averaging.action
@@ -71,3 +57,15 @@ add_dependencies(averaging_client_node averaging_action_generate_messages_cpp)
 target_link_libraries(averaging_server_node ${catkin_LIBRARIES})
 target_link_libraries(averaging_client_node ${catkin_LIBRARIES})
 
+file(GLOB srcs
+  "src/*"
+  )
+
+find_program(CLANG_FORMAT_EXE clang-format)
+if(CLANG_FORMAT_EXE)
+  add_custom_target(${PROJECT_NAME}-format ALL
+    COMMAND clang-format --style=file -i ${srcs}
+    COMMENT "Running clang-format"
+    VERBATIM
+    )
+endif()
