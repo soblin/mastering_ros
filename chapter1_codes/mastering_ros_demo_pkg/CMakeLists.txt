@@ -11,8 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   actionlib_msgs
   roscpp
   std_msgs
-  #msgとsrvからデータ型を自動生成
-  #catkin_ws/devel/include/mastering_ros_demo_pkg/demo_msg.hを作ってくれる
+  # automatically code-gen catkin_ws/devel/include/mastering_ros_demo_pkg/demo_msg.h
   message_generation
 )
 
@@ -63,7 +62,7 @@ add_executable(array_msg_subscriber_node  src/array_msg_subscriber.cpp)
 add_executable(self_msg_publisher_node    src/self_msg_publisher.cpp)
 add_executable(self_msg_subscriber_node   src/self_msg_subscriber.cpp)
 
-#add_dependencies(ノード名 パッケージ名_generate_messages_cpp)とかく
+# add_dependencies(<node name> <package name>_generate_messages_cpp)
 add_dependencies(demo_topic_publisher_node  mastering_ros_demo_pkg_generate_messages_cpp)
 add_dependencies(demo_topic_subscriber_node mastering_ros_demo_pkg_generate_messages_cpp)
 add_dependencies(demo_msg_publisher_node    mastering_ros_demo_pkg_generate_messages_cpp)
@@ -77,15 +76,32 @@ add_dependencies(array_msg_subscriber_node  mastering_ros_demo_pkg_generate_mess
 add_dependencies(self_msg_publisher_node    mastering_ros_demo_pkg_generate_messages_cpp)
 add_dependencies(self_msg_subscriber_node   mastering_ros_demo_pkg_generate_messages_cpp)
 
-target_link_libraries(demo_topic_publisher_node  ${catkin_LIBRARIES})  
-target_link_libraries(demo_topic_subscriber_node ${catkin_LIBRARIES})  
-target_link_libraries(demo_msg_publisher_node    ${catkin_LIBRARIES})  
-target_link_libraries(demo_msg_subscriber_node   ${catkin_LIBRARIES})  
-target_link_libraries(demo_service_server_node   ${catkin_LIBRARIES})  
-target_link_libraries(demo_service_client_node   ${catkin_LIBRARIES})  
-target_link_libraries(demo_action_server_node    ${catkin_LIBRARIES})  
-target_link_libraries(demo_action_client_node    ${catkin_LIBRARIES})  
-target_link_libraries(array_msg_publisher_node   ${catkin_LIBRARIES})  
-target_link_libraries(array_msg_subscriber_node  ${catkin_LIBRARIES}) 
+target_link_libraries(demo_topic_publisher_node  ${catkin_LIBRARIES})
+target_link_libraries(demo_topic_subscriber_node ${catkin_LIBRARIES})
+target_link_libraries(demo_msg_publisher_node    ${catkin_LIBRARIES})
+target_link_libraries(demo_msg_subscriber_node   ${catkin_LIBRARIES})
+target_link_libraries(demo_service_server_node   ${catkin_LIBRARIES})
+target_link_libraries(demo_service_client_node   ${catkin_LIBRARIES})
+target_link_libraries(demo_action_server_node    ${catkin_LIBRARIES})
+target_link_libraries(demo_action_client_node    ${catkin_LIBRARIES})
+target_link_libraries(array_msg_publisher_node   ${catkin_LIBRARIES})
+target_link_libraries(array_msg_subscriber_node  ${catkin_LIBRARIES})
 target_link_libraries(self_msg_publisher_node    ${catkin_LIBRARIES})
 target_link_libraries(self_msg_subscriber_node   ${catkin_LIBRARIES})
+
+file(GLOB exe_sources
+  "src/*"
+  )
+
+set(project_sources
+  ${exe_sources}
+  )
+# clang-format
+find_program(CLANG_FORMAT_EXE clang-format)
+if(CLANG_FORMAT_EXE)
+  # run clang-format
+  add_custom_target(${PROJECT_NAME}-format ALL
+    COMMAND clang-format --style=file -i ${project_sources}
+    COMMENT "Running clang-format"
+    VERBATIM)
+endif()
