@@ -17,20 +17,6 @@ find_package(catkin REQUIRED COMPONENTS
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS)
 
-## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
-
-## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
-
 ## Generate actions in the 'action' folder
 add_action_files(
   FILES
@@ -61,3 +47,16 @@ add_dependencies(fibonacci_client_node fibonacci_action_generate_messages_cpp)
 
 target_link_libraries(fibonacci_server_node ${catkin_LIBRARIES})
 target_link_libraries(fibonacci_client_node ${catkin_LIBRARIES})
+
+file(GLOB srcs
+  "src/*"
+  )
+
+find_program(CLANG_FORMAT_EXE clang-format)
+if(CLANG_FORMAT_EXE)
+  add_custom_target(${PROJECT_NAME}-format ALL
+    COMMAND clang-format --style=file -i ${srcs}
+    COMMENT "Running clang-format"
+    VERBATIM
+    )
+endif()
