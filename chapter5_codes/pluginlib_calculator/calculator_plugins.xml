@@ -1,14 +1,21 @@
 <library path="lib/libpluginlib_calculator">
-  <!--
-	  pluginlib_calculator がパッケージ名
-	  calculator_base::calc_functions が もともとのクラス
-	  継承
-	  calculator_plugins::Add : public calculator_base::calc_functions
-	  calculator_plugins::Sub : public calculator_base::calc_functions
-	  -->
-  <class name="pluginlib_calculator/Add" type="calculator_plugins::Add" base_class_type="calculator_base::calc_functions">
-	<description>This is add plugin</description>
+  <class name="pluginlib_calculator/CalculatorAdd" type="calculator_plugins::CalculatorAdd" base_class_type="calculator_base::CalculatorBase">
+	<description>This is an Add plugin</description>
   </class>
 
-  
+  <class name="pluginlib_calculator/CalculatorSub" type="calculator_plugins::CalculatorSub" base_class_type="calculator_base::CalculatorBase">
+	<description>This is an Sub plugin</description>
+  </class>
+
+  <class name="pluginlib_calculator/CalculatorMul" type="calculator_plugins::CalculatorMul" base_class_type="calculator_base::CalculatorBase">
+	<description>This is an Mul plugin</description>
+  </class>
+
+  <class name="pluginlib_calculator/CalculatorDiv" type="calculator_plugins::CalculatorDiv" base_class_type="calculator_base::CalculatorBase">
+	<description>This is an Div plugin</description>
+  </class>
+
+  <class name="pluginlib_calculator/CalculatorHypot" type="calculator_plugins::CalculatorHypot" base_class_type="calculator_base::CalculatorBase">
+	<description>This is an Hypot plugin</description>
+  </class>
 </library>

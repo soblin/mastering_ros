@@ -19,4 +19,5 @@
   <export>
 	<pluginlib_calculator plugin="${prefix}/calculator_plugins.xml"/>
   </export>
+  
 </package>

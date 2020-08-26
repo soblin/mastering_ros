@@ -27,43 +27,42 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
   )
 
-## libpluginlib_calculatorを利用するのにcalculator_loader_nodeが必要
-add_library(pluginlib_calculator src/calculator_plugins.cpp)
+add_library(pluginlib_calculator lib/CalculatorPlugins.cpp)
 target_link_libraries(pluginlib_calculator ${catkin_LIBRARIES})
 
 add_executable(calculator_loader_node src/calculator_loader.cpp)
 target_link_libraries(calculator_loader_node ${catkin_LIBRARIES})
 
 install(TARGETS pluginlib_calculator calculator_loader_node
-   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-   )
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+  )
 
 ## Mark cpp header files for installation
 install(DIRECTORY include/${PROJECT_NAME}/
-   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-   FILES_MATCHING PATTERN "*.h"
-   PATTERN ".svn" EXCLUDE
-   )
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  FILES_MATCHING PATTERN "*.h"
+  PATTERN ".svn" EXCLUDE
+  )
 
-## Mark other files for installation (e.g. launch and bag files, etc.)
+### Mark other files for installation (e.g. launch and bag files, etc.)
 install(FILES
-   # myfile1
-   # myfile2
-   calculator_plugins.xml
-   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-   )
+  calculator_plugins.xml
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  )
 
-#############
-## Testing ##
-#############
+file(GLOB srcs
+  "include/pluginlib_calculator/*"
+  "lib/*"
+  "src/*"
+  )
 
-## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_pluginlib_calculator.cpp)
-# if(TARGET ${PROJECT_NAME}-test)
-#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
-# endif()
-
-## Add folders to be run by python nosetests
-# catkin_add_nosetests(test)
+find_program(CLANG_FORMAT_EXE clang-format)
+if(CLANG_FORMAT_EXE)
+  # run clang-format
+  add_custom_target(${PROJECT_NAME}-format ALL
+    COMMAND clang-format --style=file -i ${srcs}
+    COMMENT "Running clang-format"
+    VERBATIM)
+endif()
