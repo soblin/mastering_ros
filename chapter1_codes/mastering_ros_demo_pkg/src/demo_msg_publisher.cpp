@@ -21,27 +21,29 @@ msg =
 ]
 
 */
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
   ros::init(argc, argv, "demo_msg_publisher_node");
   ros::NodeHandle node_obj;
   ros::Publisher demo_msg_publisher_node =
-      node_obj.advertise<mastering_ros_demo_pkg::full_message>(
-          "/demo_msg_publisher_topic", 50);
+      node_obj.advertise<mastering_ros_demo_pkg::full_message>("/demo_msg_publisher_topic", 50);
 
   ros::Rate loop_rate(1);
 
   mastering_ros_demo_pkg::full_message msg;
   mastering_ros_demo_pkg::unit unit_msg;
 
-  std::vector<std::string> greetings1 = {"abcd", "efg", "hijk", "lmn"};
-  std::vector<std::string> greetings2 = {"opqr", "stu", "vw", "xyz"};
+  std::vector<std::string> greetings1 = { "abcd", "efg", "hijk", "lmn" };
+  std::vector<std::string> greetings2 = { "opqr", "stu", "vw", "xyz" };
   int32_t number = 0;
   uint32_t unumber = 0;
   float fnumber = 0.5;
   bool TrueOrFalse = true;
 
-  while (ros::ok()) {
-    for (int i = 0; i < 4; i++) {
+  while (ros::ok())
+  {
+    for (int i = 0; i < 4; i++)
+    {
       unit_msg.greeting1 = greetings1[i];
       unit_msg.number = number++;
       unit_msg.unumber = unumber++;

@@ -20,19 +20,19 @@
 using pkg_data = mastering_ros_demo_pkg::data;
 using pkg_data_array = mastering_ros_demo_pkg::data_array;
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
   ros::init(argc, argv, "array_msg_publisher_node");
   ros::NodeHandle node_obj;
-  ros::Publisher array_msg_publisher_node =
-      node_obj.advertise<pkg_data_array>("/array_msg_publisher_topic", 50);
+  ros::Publisher array_msg_publisher_node = node_obj.advertise<pkg_data_array>("/array_msg_publisher_topic", 50);
 
   ros::Rate loop_rate(1);
 
   pkg_data_array array_msg;
   pkg_data data_msg;
 
-  auto packData = [](pkg_data &data, int32_t upper_left, int32_t lower_right,
-                     const char *color, const char *camera_id) {
+  auto packData = [](pkg_data& data, int32_t upper_left, int32_t lower_right, const char* color,
+                     const char* camera_id) {
     data.upperLeft = upper_left;
     data.lowerRight = lower_right;
     data.color = std::string(color);
