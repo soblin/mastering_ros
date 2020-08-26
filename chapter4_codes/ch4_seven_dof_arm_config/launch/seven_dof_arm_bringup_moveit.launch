@@ -1,6 +1,4 @@
 <launch>
-  <arg name="command_args" default="-d $(find ch4_seven_dof_arm_config)/config/bringup.rviz"/>
-  
   <!-- Launch Gazebo  -->
   <include file="$(find ch4_seven_dof_arm_gazebo)/launch/seven_dof_arm_world.launch" />
 
@@ -8,7 +6,7 @@
   <include file="$(find ch4_seven_dof_arm_gazebo)/launch/seven_dof_arm_gazebo_states.launch" />
 
   <!-- ros_control position control dof arm launch file -->
-  <!--<include file="$(find seven_dof_arm_gazebo)/launch/seven_dof_arm_gazebo_position.launch" />  -->
+  <!-- <include file="$(find ch4_seven_dof_arm_gazebo)/launch/seven_dof_arm_gazebo_position.launch" /> -->
 
   <!-- ros_control trajectory control dof arm launch file -->
   <include file="$(find ch4_seven_dof_arm_gazebo)/launch/seven_dof_arm_trajectory_controller.launch" />
@@ -25,5 +23,10 @@
   <include file="$(find ch4_seven_dof_arm_config)/launch/moveit_rviz.launch">
 	<arg name="config" value="true"/>
   </include>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="/use_gui" value="false"/>
+    <rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam>
+  </node>
   
 </launch>
