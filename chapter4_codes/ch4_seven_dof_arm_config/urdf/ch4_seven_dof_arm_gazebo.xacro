@@ -186,7 +186,7 @@
     <origin xyz="0 0 0.05" rpy="0 ${M_PI/2} ${M_PI*0}" />
     <axis xyz="-1 0 0" />
     <limit effort="300" velocity="1" lower="-2.61799387799" upper="1.98394848567"/>
-    <dynamics damping="50" friction="1"/>
+    <dynamics damping="0.1" friction="1"/>
   </joint>
 
 
@@ -224,7 +224,7 @@
     <origin xyz="-0.041 0.0021 0.0" rpy="-${M_PI/2} 0 ${M_PI/2}" />
     <axis xyz="1 0 0" />
     <limit effort="300" velocity="1" lower="-1.19962513147" upper="1.89994105047" />
-    <dynamics damping="50" friction="1"/>
+    <dynamics damping="0.1" friction="1"/>
   </joint>
 
   <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -261,7 +261,7 @@
     <origin xyz="-0.002 0 0.1206" rpy="${M_PI} ${M_PI/2} 0" />
     <axis xyz="-1 0 0" />
     <limit effort="300" velocity="1" lower="-2.61799387799" upper="0.705631162427" />
-    <dynamics damping="50" friction="1"/>
+    <dynamics damping="0.1" friction="1"/>
   </joint>
 
   <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -297,7 +297,7 @@
     <origin xyz="-0.035 0 0.0" rpy="0.055 ${M_PI/2} 0" />
     <axis xyz="1 0 0" />
     <limit effort="300" velocity="1" lower="-1.5953400194" upper="1.93281579274" />
-    <dynamics damping="50" friction="1"/>
+    <dynamics damping="0.1" friction="1"/>
   </joint>
 
   <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -334,7 +334,7 @@
     <origin xyz="0.0 0.0081 -.248" rpy="0 ${M_PI/2} ${M_PI}" />
     <axis xyz="1 0 0" />
     <limit effort="300" velocity="1" lower="-2.61799387799" upper="2.6128806087" />
-    <dynamics damping="50" friction="1"/>
+    <dynamics damping="0.1" friction="1"/>
   </joint>
 
   <!-- WRIST ROLL LINK -->
@@ -369,7 +369,7 @@
     <origin xyz="0.0 0.0 0.0001" rpy="0 ${M_PI/2} 0" />
     <axis xyz="1 0 0" />
     <limit effort="300" velocity="1" lower="-1.5953400194" upper="1.98394848567" />
-    <dynamics damping="50" friction="1"/>
+    <dynamics damping="0.1" friction="1"/>
   </joint>
 
 
@@ -407,7 +407,7 @@
     <origin xyz="0 0 0.080" rpy="${1.5*M_PI} -${.5*M_PI} 0" />
     <axis xyz="1 0 0" />
     <limit effort="300" velocity="1" lower="-2.61799387799" upper="2.6128806087" />
-    <dynamics damping="50" friction="1"/>
+    <dynamics damping="0.1" friction="1"/>
   </joint>
 
   <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -456,7 +456,7 @@
                        soft_upper_limit="${ 0.0 }"/>
 
 
-    <dynamics damping="50" friction="1"/>
+    <dynamics damping="0.1" friction="1"/>
   </joint>
 
 
@@ -493,7 +493,7 @@
 
 	<!--    <mimic joint="gripper_finger_joint" multiplier="-1.0" offset="0.0" /> -->
 
-    <dynamics damping="50" friction="1"/>
+    <dynamics damping="0.1" friction="1"/>
   </joint> 
 
   <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
