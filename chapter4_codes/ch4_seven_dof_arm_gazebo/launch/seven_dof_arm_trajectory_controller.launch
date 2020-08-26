@@ -1,0 +1,7 @@
+<launch>
+	<rosparam file="$(find ch4_seven_dof_arm_gazebo)/config/trajectory_control.yaml" command="load"/>
+
+  <node name="seven_dof_arm_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/ch4_seven_dof_arm_config" args="seven_dof_arm_joint_controller 						      gripper_controller"/>
+
+</launch>

@@ -1,0 +1,5 @@
+ch4_seven_dof_arm_config:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  

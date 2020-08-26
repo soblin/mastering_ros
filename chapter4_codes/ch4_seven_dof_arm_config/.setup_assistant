@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: ch3_seven_dof_arm_gazebo
+    relative_path: urdf/ch3_seven_dof_arm_gazebo.xacro
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/seven_dof_arm.srdf
+  CONFIG:
+    author_name: soblin
+    author_email: soblin@github.com
+    generated_timestamp: 1598419898
