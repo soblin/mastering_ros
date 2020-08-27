@@ -3,6 +3,8 @@ project(nodelet_hello_world)
 
 add_compile_options(-std=c++11)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 find_package(catkin REQUIRED COMPONENTS
   nodelet
   roscpp
