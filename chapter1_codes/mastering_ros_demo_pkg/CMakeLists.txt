@@ -102,6 +102,6 @@ if(CLANG_FORMAT_EXE)
   # run clang-format
   add_custom_target(${PROJECT_NAME}-format ALL
     COMMAND clang-format --style=file -i ${project_sources}
-    COMMENT "Running clang-format"
+    COMMENT "Running clang-format in ${PROJECT_NAME}"
     VERBATIM)
 endif()

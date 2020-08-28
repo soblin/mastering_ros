@@ -1,12 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(fibonacci_action)
 
-## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
 
-## Find catkin macros and libraries
-## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
-## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   actionlib
   actionlib_msgs
@@ -14,16 +10,13 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
-## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS)
 
-## Generate actions in the 'action' folder
 add_action_files(
   FILES
   Fibonacci.action
   )
 
-## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
   actionlib_msgs
@@ -56,7 +49,7 @@ find_program(CLANG_FORMAT_EXE clang-format)
 if(CLANG_FORMAT_EXE)
   add_custom_target(${PROJECT_NAME}-format ALL
     COMMAND clang-format --style=file -i ${srcs}
-    COMMENT "Running clang-format"
+    COMMENT "Running clang-format in ${PROJECT_NAME}"
     VERBATIM
     )
 endif()
