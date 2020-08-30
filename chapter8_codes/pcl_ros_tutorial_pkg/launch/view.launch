@@ -1,0 +1,7 @@
+<launch>
+  <node pkg="pcl_ros_tutorial_pkg" type="pcl_publisher_node" name="pcl_publisher_node"/>
+  <node pkg="pcl_ros_tutorial_pkg" type="pcl_filter" name="pcl_filter"/>
+
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find pcl_ros_tutorial_pkg)/config/view.rviz" required="true"/>
+  
+</launch>
